@@ -1,0 +1,73 @@
+<html>
+    <style>.slider-container {
+        width: 500px;
+        overflow: hidden;
+      }
+      
+      .slider {
+        display: flex;
+        transition: transform 0.5s;
+      }
+      
+      .slider img {
+        width: 500px;
+        height: auto;
+      }
+      
+      .prev-button,
+      .next-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 10px;
+        /* background-color: #ccc; */
+        border: none;
+        /* color: #c9abab; */
+      }
+      
+      .prev-button {
+        left: 10px;
+      }
+      
+      .next-button {
+        right: 10px;
+      }
+      </style>
+
+<center>
+ <div class="slider-container">
+    <div class="slider">
+    
+      <img src="./images/week2 gif.png" alt="Image 1">
+      <img src="./images/week3 gif.png" alt="Image 2">
+      <img src="./images/week4 gif.png" alt="Image 3">
+    </div>
+    <button class="prev-button">Previous</button>
+    <button class="next-button">Next</button>
+  </div>
+</center>
+
+<script>
+ var sliderContainer = document.querySelector('.slider-container');
+var slider = document.querySelector('.slider');
+var prevButton = document.querySelector('.prev-button');
+var nextButton = document.querySelector('.next-button');
+
+var slideWidth = sliderContainer.clientWidth;
+var currentSlide = 0;
+
+prevButton.addEventListener('click', function() {
+  if (currentSlide > 0) {
+    currentSlide--;
+    slider.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+  }
+});
+
+nextButton.addEventListener('click', function() {
+  if (currentSlide < slider.childElementCount - 1) {
+    currentSlide++;
+    slider.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+  }
+});
+</script>
+</html>
